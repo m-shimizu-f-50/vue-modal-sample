@@ -3,7 +3,7 @@
     <v-card class="ma-4">
       <v-data-table :items="bookDate" :headers="headers" hide-default-footer>
         <template v-slot:[`item.edit`]="{ item }">
-          <v-btn small color="success"> 編集 </v-btn>
+          <Modal />
         </template>
       </v-data-table>
     </v-card>
@@ -11,7 +11,11 @@
 </template>
 
 <script>
+import Modal from "./modal";
 export default {
+  components: {
+    Modal,
+  },
   data() {
     return {
       headers: [
