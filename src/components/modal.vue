@@ -1,12 +1,14 @@
 <template>
   <div>
     <v-btn small color="success" @click="openModal"> 編集 </v-btn>
-    <div id="overlay" v-show="showContent">
-      <div id="content">
-        <p>これがモーダルウィンドウです。</p>
-        <button @click="closeModal">Close</button>
+    <transition name="fade">
+      <div id="overlay" v-show="showContent">
+        <div id="content">
+          <p>これがモーダルウィンドウです。</p>
+          <button @click="closeModal">Close</button>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -51,5 +53,26 @@ export default {
   width: 50%;
   padding: 1em;
   background: #fff;
+}
+
+.fade {
+  &-enter {
+    opacity: 0;
+    &-to {
+      opacity: 1;
+    }
+    &-active {
+      transition: opacity 0.6s;
+    }
+  }
+  &-leave {
+    opacity: 1;
+    &-to {
+      opacity: 0;
+    }
+    &-active {
+      transition: opacity 0.6s;
+    }
+  }
 }
 </style>
