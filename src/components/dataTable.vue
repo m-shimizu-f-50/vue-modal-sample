@@ -3,7 +3,7 @@
     <v-card class="ma-4">
       <v-data-table :items="bookDate" :headers="headers" hide-default-footer>
         <template v-slot:[`item.edit`]="{ item }">
-          <Modal />
+          <Modal :data="item" />
         </template>
       </v-data-table>
     </v-card>

@@ -1,11 +1,38 @@
 <template>
   <div>
-    <v-btn small color="success" @click="openModal"> 編集 </v-btn>
+    <v-btn small color="primary" @click="openModal"> 編集 </v-btn>
     <transition name="fade">
       <div id="overlay" v-show="showContent">
         <div id="content">
-          <p>これがモーダルウィンドウです。</p>
-          <button @click="closeModal">Close</button>
+          <p>編集画面</p>
+          <v-card class="pa-5">
+            <div style="display: flex; align-items: center" class="mb-5">
+              <span>タイトル：</span>
+              <v-text-field
+                v-model="title"
+                solo
+                flat
+                hide-details
+                class="ml-2 text-style"
+              />
+            </div>
+            <div style="display: flex; align-items: center">
+              <span>内容：</span>
+              <v-text-field
+                v-model="content"
+                solo
+                flat
+                hide-details
+                class="ml-2 text-style"
+              />
+            </div>
+          </v-card>
+          <div style="display: flex" class="mt-5">
+            <v-btn small color="error" 　class="mr-3" @click="closeModal">
+              閉じる
+            </v-btn>
+            <v-btn small color="success"> 更新 </v-btn>
+          </div>
         </div>
       </div>
     </transition>
@@ -14,9 +41,14 @@
 
 <script>
 export default {
+  props: {
+    data: Object,
+  },
   data() {
     return {
       showContent: false,
+      title: this.data.title,
+      content: this.data.content,
     };
   },
   methods: {
@@ -25,6 +57,9 @@ export default {
     },
     closeModal: function () {
       this.showContent = false;
+    },
+    test: function () {
+      console.log(this.data);
     },
   },
 };
@@ -74,5 +109,10 @@ export default {
       transition: opacity 0.6s;
     }
   }
+}
+
+.text-style {
+  border: solid 1px #bdbdbd;
+  border-radius: 10px;
 }
 </style>
