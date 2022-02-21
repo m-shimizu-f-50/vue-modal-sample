@@ -62,7 +62,7 @@ export default {
       console.log(this.data);
     },
     update() {
-      this.$emit("my-click", this.title);
+      this.$emit("my-click", this.title, this.content);
     },
   },
 };

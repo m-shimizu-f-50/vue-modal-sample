@@ -3,7 +3,7 @@
     <v-card class="ma-4">
       <v-data-table :items="bookDate" :headers="headers" hide-default-footer>
         <template v-slot:[`item.edit`]="{ item }">
-          <Modal :data="item" />
+          <Modal :data="item" @my-click="data" />
         </template>
       </v-data-table>
     </v-card>
@@ -49,6 +49,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    data(...value) {
+      console.log("OK", value);
+    },
   },
 };
 </script>
