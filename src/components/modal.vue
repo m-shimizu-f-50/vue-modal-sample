@@ -31,7 +31,7 @@
             <v-btn small color="error" 　class="mr-3" @click="closeModal">
               閉じる
             </v-btn>
-            <v-btn small color="success"> 更新 </v-btn>
+            <v-btn small color="success" @click="update"> 更新 </v-btn>
           </div>
         </div>
       </div>
@@ -60,6 +60,9 @@ export default {
     },
     test: function () {
       console.log(this.data);
+    },
+    update() {
+      this.$emit("my-click", this.title);
     },
   },
 };
