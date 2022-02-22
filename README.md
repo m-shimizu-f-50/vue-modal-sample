@@ -1,2 +1,2 @@
 # vue-modal-sample
-Created with CodeSandbox
+Vuetifyのテーブルとモーダルとのデータのやり取りする実装
