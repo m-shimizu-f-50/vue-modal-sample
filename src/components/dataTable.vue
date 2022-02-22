@@ -2,8 +2,8 @@
   <v-app>
     <v-card class="ma-4">
       <v-data-table :items="bookDate" :headers="headers" hide-default-footer>
-        <template v-slot:[`item.edit`]="{ item }">
-          <Modal :data="item" @my-click="data" />
+        <template v-slot:[`item.edit`]="{ item, index }">
+          <Modal :data="item" @my-click="data($event, index)" />
         </template>
       </v-data-table>
     </v-card>
@@ -51,8 +51,11 @@ export default {
     };
   },
   methods: {
-    data(...value) {
+    data(value, index) {
       console.log("OK", value);
+      const editData = this.bookDate[index];
+      editData.title = value.title;
+      editData.content = value.content;
     },
   },
 };
